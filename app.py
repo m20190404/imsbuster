@@ -24,12 +24,13 @@ from dash.dependencies import Input, Output
 #------------------------------------------#
 
 
-# data_path = 'C:/Users/pb937wu/NOVAIMS/Data Visualization - General/Project Development/'
+data_path = 'C:/Users/pb937wu/NOVAIMS/Data Visualization - General/Project Development/'
 
 # dfcritic = pd.read_csv(data_path + 'Critic_File_v2.csv', sep=';')
 
-dfmaster = pd.read_excel('data/filmsDataset.xlsx', sheet_name='Master_projeto')
+# dfmaster = pd.read_excel('data/filmsDataset.xlsx', sheet_name='Master_projeto')
 
+dfmaster = pd.read_excel( data_path + 'filmsDataset.xlsx', sheet_name='Master_projeto')
 
 #path para o grafico de mapa
 
@@ -43,6 +44,7 @@ home_year = 2017
 
 df_filmsPerStudio_filtered = df_filmsPerStudio[df_filmsPerStudio[home_year] != 0]
 
+url_poster = 'https://m.media-amazon.com/images/M/MV5BNWEyNTE0YTEtY2FkMi00MmY3LTg4MWMtODdjYjRkNGM4ZTZhXkEyXkFqcGdeQXVyMzI0NDc4ODY@._V1_SX300.jpg'
 
 # logo_img = data_path + 'Logo v1.png'
 
@@ -92,6 +94,7 @@ app.layout = html.Div([
                     id='movie_drop',
                     options=moviename_options,
                     multi=False,
+                    value='Jurassic World',
                     style={'font-family': 'Impact, Charcoal, sans-serif'}
                 ),
             ], className='box_type1'),
