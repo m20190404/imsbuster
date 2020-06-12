@@ -28,7 +28,7 @@ from dash.dependencies import Input, Output
 
 # dfcritic = pd.read_csv(data_path + 'Critic_File_v2.csv', sep=';')
 
-dfmaster = pd.read_excel('data/filmsDataset.xlsx', sheet_name='Master_projeto')
+dfmaster = pd.read_excel('https://raw.githubusercontent.com/m20190404/imsbuster/master/data/filmsDataset.xlsx', sheet_name='Master_projeto')
 
 # dfmaster = pd.read_excel( data_path + 'filmsDataset.xlsx', sheet_name='Master_projeto')
 
@@ -43,8 +43,6 @@ df_filmsPerStudio = pd.read_excel(path_dataset, sheet_name='FilmsPerYearPerStudi
 home_year = 2017
 
 df_filmsPerStudio_filtered = df_filmsPerStudio[df_filmsPerStudio[home_year] != 0]
-
-url_poster = 'https://m.media-amazon.com/images/M/MV5BNWEyNTE0YTEtY2FkMi00MmY3LTg4MWMtODdjYjRkNGM4ZTZhXkEyXkFqcGdeQXVyMzI0NDc4ODY@._V1_SX300.jpg'
 
 # logo_img = data_path + 'Logo v1.png'
 
