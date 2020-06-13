@@ -422,7 +422,6 @@ def update_output_div2(moviename_cb2):
         data=[go.Scatter(
             x=[0],
             y=[0],
-            marker_color='#0e3fa9',
         )],
         layout=go.Layout(
             font=dict(
