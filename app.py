@@ -248,10 +248,10 @@ app.layout = html.Div([
     ], style={'display': 'grid', 'grid-template-columns': '30% 70%'}, className='box'),
 
     # bottom section (signature)
-    html.Div([
-        html.Label(children='Created by: Bruno Medley (M20190404), Júlio Félix (M20190228), João Palma (20190347)',
-                   style={'font-family': 'Impact, Charcoal, sans-serif', 'color': '#ffab03'}),
-    ], style={'margin': 8}),
+#    html.Div([
+#        html.Label(children='Created by: Bruno Medley (M20190404), Júlio Félix (M20190228), João Palma (20190347)',
+#                   style={'font-family': 'Impact, Charcoal, sans-serif', 'color': '#ffab03'}),
+#    ], style={'margin': 8}),
 ])
 
 
@@ -322,6 +322,7 @@ def update_output_div(moviename, genre):
          Output(component_id='radar_fig', component_property='figure'),
          Output(component_id='bar_fig', component_property='figure'),
          Output(component_id='scatter_fig', component_property='figure'),
+         # Output(component_id='updatemenu-item-text user-select-none', component_property='figure')
      ],
     [Input(component_id="movie_drop", component_property='value')]
 )
@@ -342,7 +343,6 @@ def update_output_div2(moviename_cb2):
         theta=radarlabels,
         fill='toself',
         connectgaps=True,
-
         marker=dict(size=8,
                     ),
         line=dict(color='#0e3fa9')
@@ -357,9 +357,13 @@ def update_output_div2(moviename_cb2):
             b=15,
         ),
         polar=dict(
-            # bgcolor='#ffab03',
+            bgcolor='#969696',
             radialaxis=dict(
                 visible=True,
+                ticktext=[0, 1, 2, 3, 4, 5],
+                tickvals=[0, 1, 2, 3, 4, 5],
+                tickmode='array',
+                range=[0, 5],
             ),
         ),
         font=dict(
@@ -381,12 +385,15 @@ def update_output_div2(moviename_cb2):
         x=barlabels,
         y=barvalues,
         text=barvalues,
+        textfont=dict(
+            color='white'
+        ),
         textposition='auto',
-        opacity=0.50,
+        # opacity=0.50,
         marker=dict(
-            color='#0e3fa9',
+            color='rgba(255,171,3,0.45)',
             line=dict(
-                color='#061D4E',
+                color='#FFAB03',
                 width=3,
             )
         )
@@ -395,6 +402,12 @@ def update_output_div2(moviename_cb2):
     )])
 
     barfig.update_layout(
+        yaxis=dict(
+            ticktext=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+            tickvals=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+            tickmode='array',
+        ),
+        plot_bgcolor='#353535',
         paper_bgcolor='#353535',
         margin=dict(
             l=50,
@@ -422,8 +435,11 @@ def update_output_div2(moviename_cb2):
         data=[go.Scatter(
             x=[0],
             y=[0],
+            marker_color='#ffab03',
         )],
         layout=go.Layout(
+            xaxis_title="Weeks",
+            yaxis_title="Revenue",
             font=dict(
                 family='Impact, Charcoal, sans - serif',
                 size=12,
@@ -435,6 +451,7 @@ def update_output_div2(moviename_cb2):
                 t=15,
                 b=15,
             ),
+            plot_bgcolor='#353535',
             paper_bgcolor='#353535',
             xaxis=dict(range=[0, 23], autorange=False),
             yaxis=dict(range=[0, 950000000], autorange=False),
